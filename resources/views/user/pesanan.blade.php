@@ -55,8 +55,8 @@
                                 <th scope="row">{{$no}}</th>
                                 <td>{{ $data->paketnya->nama}}</td>
                                 <td>{{ $data->lokasi }}</td>
-                                <td>{{ App\Http\Controllers\User\PesanController::tglID($data->tgl_acara) }}</td>
-                                <td>{{ App\Http\Controllers\User\PesanController::tglID($data->tgl_kembali) }}</td>
+                                <td>{{ App\Http\Controllers\Util\KonversiController::tgl($data->tgl_acara) }}</td>
+                                <td>{{ App\Http\Controllers\Util\KonversiController::tgl($data->tgl_kembali) }}</td>
                                 <td>{{ $data->catatan }}</td>
                                 <td>{{ $data->status }}</td>
                                 <td>
