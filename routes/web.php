@@ -35,3 +35,5 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('batal/{id}', [PesananUserController::class, 'batal'])->name('user.pesanan.batal'); // route user.pesanan.batal untuk membatalkan pesanan user
     });
 });
+
+// route untuk admin
