@@ -1,14 +1,16 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminGaleriController;
-use App\Http\Controllers\Admin\AdminHomeController;
-use App\Http\Controllers\Admin\AdminKategoriController;
-use App\Http\Controllers\Admin\AdminPesananController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\User\PesananUserController;
-use App\Http\Controllers\User\ProfilUserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\User\ProfilUserController;
+use App\Http\Controllers\User\PesananUserController;
+use App\Http\Controllers\Admin\AdminGaleriController;
+use App\Http\Controllers\Admin\AdminProdukController;
+use App\Http\Controllers\Admin\AdminPesananController;
+use App\Http\Controllers\Admin\AdminKategoriController;
+use App\Http\Controllers\Admin\AdminPaketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,7 +57,21 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function(
         Route::get('hapus/{id}', [AdminKategoriController::class, 'delete'])->name('admin.kategori.hapus');
     });
     Route::prefix('produk')->group(function(){
-        Route::get('/', [AdminPesananController::class, 'index'])->name('admin.produk');
+        Route::get('/', [AdminProdukController::class, 'index'])->name('admin.produk');
+        Route::get('tambah', [AdminProdukController::class, 'tambah'])->name('admin.produk.tambah');
+        Route::post('tambah', [AdminProdukController::class, 'store'])->name('admin.produk.simpan');
+        Route::get('edit/{id}', [AdminProdukController::class, 'ubah'])->name('admin.produk.ubah');
+        Route::post('edit', [AdminProdukController::class, 'edit'])->name('admin.produk.edit');
+        Route::get('hapus/{id}', [AdminProdukController::class, 'delete'])->name('admin.produk.hapus');
+
+        //Routes views paket 
+        Route::prefix('paket')->group(function(){
+            Route::get('tambah', [AdminPaketController::class, 'tambah'])->name('admin.paket.tambah');
+            Route::post('tambah', [AdminPaketController::class, 'store'])->name('admin.paket.simpan');
+            Route::get('edit/{id}', [AdminPaketController::class, 'ubah'])->name('admin.paket.ubah');
+            Route::post('edit', [AdminPaketController::class, 'edit'])->name('admin.paket.edit');
+            Route::get('hapus/{id}', [AdminPaketController::class, 'delete'])->name('admin.paket.hapus');
+        });
     });
     Route::prefix('galeri')->group(function(){
         Route::get('/', [AdminGaleriController::class, 'index'])->name('admin.galeri');

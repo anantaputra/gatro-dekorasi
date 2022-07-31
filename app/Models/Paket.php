@@ -12,4 +12,9 @@ class Paket extends Model
     protected $table = 'paket';
 
     protected $guarded = ['id'];
+
+    public function kategorinya()
+    {
+        return $this->belongsTo(Kategori::class, 'id_kategori');
+    }
 }
