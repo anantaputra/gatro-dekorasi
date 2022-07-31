@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminGaleriController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminKategoriController;
 use App\Http\Controllers\Admin\AdminPesananController;
@@ -57,7 +58,10 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function(
         Route::get('/', [AdminPesananController::class, 'index'])->name('admin.produk');
     });
     Route::prefix('galeri')->group(function(){
-        Route::get('/', [AdminPesananController::class, 'index'])->name('admin.galeri');
+        Route::get('/', [AdminGaleriController::class, 'index'])->name('admin.galeri');
+        Route::get('/tambah', [AdminGaleriController::class, 'tambah'])->name('admin.galeri.tambah');
+        Route::post('/tambah', [AdminGaleriController::class, 'store'])->name('admin.galeri.simpan');
+        Route::get('/hapus/{id}', [AdminGaleriController::class, 'delete'])->name('admin.galeri.hapus');
     });
     Route::prefix('pengembalian')->group(function(){
         Route::get('/', [AdminPesananController::class, 'index'])->name('admin.pengembalian');
