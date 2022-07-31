@@ -48,7 +48,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function(
     Route::prefix('pesanan')->group(function(){
         Route::get('/', [AdminPesananController::class, 'index'])->name('admin.pesanan');
     });
-    Route::prefix('ketegori')->group(function(){
+    Route::prefix('kategori')->group(function(){
         Route::get('/', [AdminKategoriController::class, 'index'])->name('admin.kategori');
         Route::get('tambah', [AdminKategoriController::class, 'tambah'])->name('admin.kategori.tambah');
         Route::post('tambah', [AdminKategoriController::class, 'store'])->name('admin.kategori.simpan');
