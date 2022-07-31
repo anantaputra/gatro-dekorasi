@@ -18,7 +18,7 @@
     </div>
     {{-- bagian isi menu --}}
     <div class="row mt-3 ml-3">
-        <div class="col-3 mx-2">
+        <div class="col-3 ml-2 mr-5">
             <div class="card border-success text-dark text-justify mb-3" style="width: 18rem; ">
                 <div class="card-body">
                     <div class="d-flex">
@@ -40,7 +40,7 @@
                 </div>                
             </div>
         </div>
-        <div class="col-3 mx-2">
+        <div class="col-3 ml-2 mr-5">
             <div class="card border-primary text-dark text-justify mb-3" style="width: 18rem; ">
                 <div class="card-body">
                     <div class="d-flex">
@@ -62,7 +62,7 @@
                 </div>                
             </div>
         </div>
-        <div class="col-3 mx-2">
+        <div class="col-3 ml-2 mr-5">
             <div class="card border-warning text-dark text-justify mb-3" style="width: 18rem; ">
                 <div class="card-body">
                     <div class="d-flex">
@@ -84,7 +84,7 @@
                 </div>                
             </div>
         </div> 
-        <div class="col-3 mx-2">
+        <div class="col-3 ml-2 mr-5 mt-4">
             <div class="card border-info text-dark mb-3" style="width: 18rem;">
                 <div class="card-body">
                     <div class="d-flex">
@@ -107,7 +107,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-3 mx-2">
+        <div class="col-3 ml-2 mr-5 mt-4">
             <div class="card border-dark text-dark mb-3" style="width: 18rem;">
                 <div class="card-body">
                     <div class="d-flex">

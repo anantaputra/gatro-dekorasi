@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\AdminKategoriController;
+use App\Http\Controllers\Admin\AdminPesananController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\PesananUserController;
 use App\Http\Controllers\User\ProfilUserController;
@@ -37,3 +40,30 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 // route untuk admin
+Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function(){
+    Route::get('/', [AdminHomeController::class, 'index'])->name('admin.home');
+    Route::prefix('pesanan')->group(function(){
+        Route::get('/', [AdminPesananController::class, 'index'])->name('admin.pesanan');
+    });
+    Route::prefix('ketegori')->group(function(){
+        Route::get('/', [AdminKategoriController::class, 'index'])->name('admin.kategori');
+        Route::get('tambah', [AdminKategoriController::class, 'tambah'])->name('admin.kategori.tambah');
+        Route::post('tambah', [AdminKategoriController::class, 'store'])->name('admin.kategori.simpan');
+        Route::get('edit/{id}', [AdminKategoriController::class, 'ubah'])->name('admin.kategori.ubah');
+        Route::post('edit', [AdminKategoriController::class, 'edit'])->name('admin.kategori.edit');
+        Route::get('hapus/{id}', [AdminKategoriController::class, 'delete'])->name('admin.kategori.hapus');
+    });
+    Route::prefix('produk')->group(function(){
+        Route::get('/', [AdminPesananController::class, 'index'])->name('admin.produk');
+    });
+    Route::prefix('galeri')->group(function(){
+        Route::get('/', [AdminPesananController::class, 'index'])->name('admin.galeri');
+    });
+    Route::prefix('pengembalian')->group(function(){
+        Route::get('/', [AdminPesananController::class, 'index'])->name('admin.pengembalian');
+    });
+    Route::prefix('laporan')->group(function(){
+        Route::get('penyewaan', [AdminPesananController::class, 'index'])->name('admin.laporan.penyewaan');
+        Route::get('pengembalian', [AdminPesananController::class, 'index'])->name('admin.laporan.pengembalian');
+    });
+});
