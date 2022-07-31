@@ -29,10 +29,10 @@ class LoginController extends Controller
     // protected $redirectTo = RouteServiceProvider::HOME;
     protected function redirectTo()
     {
-        if(auth()->user()->is_admin == 1){
-            return '/admin';
-        } else {
-            return '/';
+        if(auth()->user()->is_admin == 1){ // jika user is_admin sama dengan 1 atau true
+            return '/admin'; // redirect atau arahkan ke url /admin
+        } else { // jika user is_admin tidak sama dengan 1 atau true
+            return '/'; // redirect atau arahkan ke url /
         }
     }
 
