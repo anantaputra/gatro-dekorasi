@@ -32,5 +32,6 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::prefix('pesanan')->group(function(){
         Route::get('/', [PesananUserController::class, 'index'])->name('user.pesanan'); // route user.pesanan
+        Route::get('batal/{id}', [PesananUserController::class, 'batal'])->name('user.pesanan.batal'); // route user.pesanan.batal untuk membatalkan pesanan user
     });
 });
