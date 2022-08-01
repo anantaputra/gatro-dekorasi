@@ -27,11 +27,13 @@ class AdminPengembalianController extends Controller
     {
         $id_pesanan = $request->id_pesanan;
         $denda = $request->denda;
+        $keterangan = $request->keterangan;
 
         $pengembalian = new Pengembalian();
         $pengembalian->id_pesanan = $id_pesanan;
         if(!empty($denda)){
             $pengembalian->denda = $denda;
+            $pengembalian->keterangan = $keterangan;
         }
         $pengembalian->save();
         return redirect()->route('admin.pengembalian');
