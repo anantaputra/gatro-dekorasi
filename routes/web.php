@@ -99,6 +99,8 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function(
     });
     Route::prefix('pengembalian')->group(function(){
         Route::get('/', [AdminPengembalianController::class, 'index'])->name('admin.pengembalian');
+        Route::get('form-pengembalian/{id}', [AdminPengembalianController::class, 'pengembalian'])->name('admin.pengembalian.form');
+        Route::post('/', [AdminPengembalianController::class, 'store'])->name('admin.pengembalian.simpan');
     });
     Route::prefix('laporan')->group(function(){
         Route::get('penyewaan', [AdminPesananController::class, 'index'])->name('admin.laporan.penyewaan');

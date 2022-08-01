@@ -17,4 +17,9 @@ class Pesanan extends Model
     {
         return $this->belongsTo(Paket::class, 'id_paket', 'id');
     }
+
+    public function usernya()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
 }
