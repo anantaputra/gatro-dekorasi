@@ -61,10 +61,10 @@
                                 <td>{{ $data->status }}</td>
                                 <td>
                                     @if ($data->status == 'menunggu')
-                                        <a href="{{ route('batalkan.pesanan', ['id' => $data->id]) }}" role="button" class="btn btn-danger">Batalkan Pesanan</a>
+                                        <a href="{{ route('user.pesanan.batal', ['id' => $data->id]) }}" role="button" class="btn btn-danger">Batalkan Pesanan</a>
                                     @endif
                                     @if ($data->status == 'diterima')
-                                        <a href="{{ route('pilih.pembayaran', ['id' => $data->id]) }}" role="button" class="btn btn-primary">Pilih Pembayaran</a>
+                                        <a href="{{ route('user.konfirmasi', ['id' => $data->id]) }}" role="button" class="btn btn-primary">Bayar</a>
                                     @endif
                                 </td>
                             </tr>

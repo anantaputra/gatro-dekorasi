@@ -15,6 +15,11 @@ class Paket extends Model
 
     public function kategorinya()
     {
-        return $this->belongsTo(Kategori::class, 'id_kategori');
+        return $this->belongsTo(Kategori::class, 'id_kategori', 'id');
+    }
+
+    public function banner()
+    {
+        return $this->hasOne(GambarPaket::class, 'id_paket', 'id');
     }
 }

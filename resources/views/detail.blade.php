@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="container">
+    @auth
     @if (auth()->user()->is_admin != 1)    
     <div class="w-100 mt-3 breadcrumb bg-white">
         <li class="breadcrumb-item ml-5"><a href="{{ route('home') }}">Home</a></li>
@@ -16,6 +17,13 @@
         <li class="breadcrumb-item active" aria-current="page">{{ $paket->nama }}</li>
     </div>
     @endif
+    @else 
+    <div class="w-100 mt-3 breadcrumb bg-white">
+        <li class="breadcrumb-item ml-5"><a href="{{ route('home') }}">Home</a></li>
+        <li class="breadcrumb-item">{{ $paket->kategorinya->nama }}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{ $paket->nama }}</li>
+    </div>
+    @endauth
     
     <div class="px-5">
     
@@ -45,7 +53,6 @@
               
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                       <div class="card-body mt-3 d-flex justify-content-center">
-                          
                             @php
                                 $harga = $paket->harga;
                                 $harga = number_format($harga, 0, '', '.');
@@ -61,13 +68,21 @@
                       @endif
                     </div>
                 </div>
+                @auth
                 @if (auth()->user()->is_admin != 1)
                 <div class="mt-4 mr-4">
-                    <a href="https://wa.me/{{ env('no_wa') }}" role="button" class="btn" style="width: 40%; background-color:#c88a72;"><img src="{{ asset('img/chat.png')}}" style="color: white" width="18" height="20" alt=""> Chat</button>
+                    <a href="https://wa.me/{{ env('WHATSAPP') }}" role="button" class="btn" style="width: 40%; background-color:#c88a72;"><img src="{{ asset('img/chat.png')}}" style="color: white" width="18" height="20" alt=""> Chat</button>
                         
-                    <a href="{{ route('pesan-sekarang', ['id' => $paket->id]) }}" role="button" id="pesan" class="btn mx-1" style="width: 50%; background-color:#c88a72;">Pesan Sekarang</a>
+                    <a href="{{ route('user.sewa', ['id' => $paket->id]) }}" role="button" id="pesan" class="btn mx-1" style="width: 50%; background-color:#c88a72;">Pesan Sekarang</a>
                 </div>
                 @endif
+                @else 
+                <div class="mt-4 mr-4">
+                    <a href="https://wa.me/{{ env('WHATSAPP') }}" role="button" class="btn" style="width: 40%; background-color:#c88a72;"><img src="{{ asset('img/chat.png')}}" style="color: white" width="18" height="20" alt=""> Chat</button>
+                        
+                    <a href="{{ route('user.sewa', ['id' => $paket->id]) }}" role="button" id="pesan" class="btn mx-1" style="width: 50%; background-color:#c88a72;">Pesan Sekarang</a>
+                </div>
+                @endauth
 
                 <div class="mt-3 ">
                     <hr>

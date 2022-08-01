@@ -20,6 +20,9 @@ class ProfilUserController extends Controller
     {
         $profil = User::find(auth()->user()->id); // cari user berdasarkan id user yang login
         // sesuai dengan kolom db == // sesuai dengan input form
+        if(auth()->user()->id != $profil->id){ // jika user yg melakukan ubah data bukan user pemilik data
+            return abort(401); // akan di abort atau forbidden
+        }
         $profil->name = $request->nama; // update name user
         $profil->email = $request->email; // update email user
         $profil->no_hp1 = $request->no_hp1; // update no hp1 user

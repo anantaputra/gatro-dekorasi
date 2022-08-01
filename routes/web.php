@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminProdukController;
 use App\Http\Controllers\Admin\AdminPesananController;
 use App\Http\Controllers\Admin\AdminKategoriController;
 use App\Http\Controllers\Admin\AdminPaketController;
+use App\Http\Controllers\User\TransaksiUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,15 +32,23 @@ Auth::routes();
 
 // route untuk user yang sudah login
 Route::group(['middleware' => 'auth'], function(){
-    Route::prefix('profil')->group(function(){
+    Route::prefix('user/profil')->group(function(){
         Route::get('/', [ProfilUserController::class, 'index'])->name('user.profil'); // route user.profil
         Route::post('/', [ProfilUserController::class, 'simpan'])->name('user.profil.simpan'); // route user.profil.simpan
     });
 
-    Route::prefix('pesanan')->group(function(){
+    Route::prefix('user/pesanan')->group(function(){
         Route::get('/', [PesananUserController::class, 'index'])->name('user.pesanan'); // route user.pesanan
         Route::get('batal/{id}', [PesananUserController::class, 'batal'])->name('user.pesanan.batal'); // route user.pesanan.batal untuk membatalkan pesanan user
     });
+
+    Route::prefix('sewa')->group(function(){
+        Route::get('/paket/{id}', [PesananUserController::class, 'pesan'])->name('user.sewa');
+        Route::post('simpan', [PesananUserController::class, 'store'])->name('user.sewa.simpan');
+        Route::get('{id}/konfirmasi', [PesananUserController::class, 'konfirmasi'])->name('user.konfirmasi');
+        Route::post('/snap-bayar', [TransaksiUserController::class, 'store'])->name('snap-bayar');
+    });
+
 });
 
 // route untuk admin
@@ -47,6 +56,10 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function(
     Route::get('/', [AdminHomeController::class, 'index'])->name('admin.home');
     Route::prefix('pesanan')->group(function(){
         Route::get('/', [AdminPesananController::class, 'index'])->name('admin.pesanan');
+        Route::post('filter', [AdminPesananController::class, 'filter'])->name('admin.pesanan.filter');
+        Route::get('/respons/{id}', [AdminPesananController::class, 'detail'])->name('admin.pesanan.respons');
+        Route::get('/{id}/terima', [AdminPesananController::class, 'terima'])->name('admin.pesanan.terima');
+        Route::get('/{id}/tolak', [AdminPesananController::class, 'tolak'])->name('admin.pesanan.tolak');
     });
     Route::prefix('kategori')->group(function(){
         Route::get('/', [AdminKategoriController::class, 'index'])->name('admin.kategori');
