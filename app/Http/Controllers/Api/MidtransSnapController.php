@@ -48,9 +48,11 @@ class MidtransSnapController extends Controller
 
         $transaksi = Transaksi::find($json->order_id);
         $transaksi->status = $json->transaction_status;
-        $pesanan = Pesanan::find($transaksi->id_pesanan);
-        $pesanan->status = 'booking';
-        $pesanan->save();
+        if($transaksi->status == 'settlement'){
+            $pesanan = Pesanan::find($transaksi->id_pesanan);
+            $pesanan->status = 'booking';
+            $pesanan->save();
+        }
         return $transaksi->save();
 
     }
