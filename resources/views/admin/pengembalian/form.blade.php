@@ -44,10 +44,6 @@
                     <label for="harga-paket">Harga Paket</label>
                     <input type="text" class="form-control" id="harga-paket" value="Rp. {{ number_format($pesanan->paketnya->harga, 0, '', '.') }}" readonly>
                   </div>
-                  <div class="form-group col-md-6">
-                    <label for="keterangan">Keterangan</label>
-                    <input type="text" class="form-control" id="keterangan" name="keterangan">
-                  </div>
                 </div>
                 <div class="form-group">
                     <label for="denda">Denda</label>
@@ -57,6 +53,10 @@
                         </div>
                         <input type="number" class="form-control" id="inlineFormInputGroup" name="denda" placeholder="Nominal Denda">
                     </div>
+                </div>
+                <div class="form-group">
+                  <label for="keterangan">Keterangan</label>
+                  <input type="text" class="form-control" id="keterangan" name="keterangan">
                 </div>
                 <button type="submit" class="btn btn-primary">Kirim</button>
             </form>
