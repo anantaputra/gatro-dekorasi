@@ -43,10 +43,12 @@ Route::group(['middleware' => 'auth'], function(){
     });
 
     Route::prefix('sewa')->group(function(){
-        Route::get('/paket/{id}', [PesananUserController::class, 'pesan'])->name('user.sewa');
+        Route::get('paket/{id}', [PesananUserController::class, 'pesan'])->name('user.sewa');
         Route::post('simpan', [PesananUserController::class, 'store'])->name('user.sewa.simpan');
         Route::get('{id}/konfirmasi', [PesananUserController::class, 'konfirmasi'])->name('user.konfirmasi');
-        Route::post('/snap-bayar', [TransaksiUserController::class, 'store'])->name('snap-bayar');
+        Route::post('snap-bayar', [TransaksiUserController::class, 'store'])->name('snap-bayar');
+        Route::get('bayar/{token}', [TransaksiUserController::class, 'bayar'])->name('user.bayar');
+        Route::post('bayar', [TransaksiUserController::class, 'update'])->name('update.pembayaran');
     });
 
 });

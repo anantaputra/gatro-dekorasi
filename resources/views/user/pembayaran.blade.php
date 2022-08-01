@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <div class="card w-50 mt-4 mx-auto" >
         <div class="card-body">
             <a href="{{ route('home')}}">
