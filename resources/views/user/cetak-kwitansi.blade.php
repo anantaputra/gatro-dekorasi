@@ -47,11 +47,7 @@
                           @endif
                         </td>
                         <td>
-                          @if ($transaksi->pembayaran == 'dp')
-                          Rp. {{ number_format($transaksi->total, 0, '', '.') }}
-                          @else
                           Rp. {{ number_format($transaksi->pesanannya->paketnya->harga, 0, '', '.') }}
-                          @endif
                         </td>
                       </tr>
                       <tr>
@@ -79,7 +75,7 @@
             <div class="w-50 mt-4 ml-auto  mx-auto d-flex justify-content-end p-2">
               <p>Terima Kasih</p>
             </div>
-            <div class="w-50 mt-3 ml-auto  mx-auto d-flex justify-content-end p-1">
+            <div class="w-50 mt-3 mx-auto d-flex justify-content-end pr-4 pb-2">
               <img src="{{ asset('img/ttd.png') }}" width="50px" height="30px" alt="">
             </div>
  
