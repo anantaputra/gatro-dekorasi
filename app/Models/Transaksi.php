@@ -16,4 +16,9 @@ class Transaksi extends Model
     public $incrementing = false;
     
     protected $primaryKey = 'kd_transaksi';
+
+    public function pesanannya()
+    {
+        return $this->belongsTo(Pesanan::class, 'id_pesanan');
+    }
 }

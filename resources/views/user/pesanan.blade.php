@@ -66,6 +66,9 @@
                                     @if ($data->status == 'diterima')
                                         <a href="{{ route('user.konfirmasi', ['id' => $data->id]) }}" role="button" class="btn btn-primary">Bayar</a>
                                     @endif
+                                    @if ($data->status == 'booking')
+                                        <a href="{{ route('user.cetak.nota', ['id' => $data->id]) }}" role="button" class="btn btn-success">Cetak Nota</a>
+                                    @endif
                                 </td>
                             </tr>
                         @php

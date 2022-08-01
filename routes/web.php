@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('snap-bayar', [TransaksiUserController::class, 'store'])->name('snap-bayar');
         Route::get('bayar/{token}', [TransaksiUserController::class, 'bayar'])->name('user.bayar');
         Route::post('bayar', [TransaksiUserController::class, 'update'])->name('update.pembayaran');
+        Route::get('nota/{id}/cetak', [PesananUserController::class, 'cetak'])->name('user.cetak.nota');
     });
 
 });

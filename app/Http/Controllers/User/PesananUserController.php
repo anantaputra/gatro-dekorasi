@@ -6,6 +6,7 @@ use App\Models\Paket;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Transaksi;
 
 class PesananUserController extends Controller
 {
@@ -72,5 +73,13 @@ class PesananUserController extends Controller
         } else {
             return abort(401);
         }
+    }
+
+    public function cetak($id)
+    {
+        $transaksi = Transaksi::where('id_pesanan', $id)
+                    ->where('status','settlement')->first();
+
+        return view('user.cetak-kwitansi', compact('transaksi'));
     }
 }
