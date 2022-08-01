@@ -18,16 +18,27 @@
         </div>
       </div>
       <div class="mt-3">
-        <div class="d-flex col-11 align-items-center mb-2">
-          <span>Filter: </span>
-          <select name="tgl" id="tgl" class="form-control col-2 ml-3">
-            <option value="0" selected disabled>-Pilih-</option>
-            <option value="tgl_acara">Tanggal Acara</option>
-            <option value="tgl_kembali">Tanggal Pengembalian</option>
-          </select>
-          <input type="date" name="tgl_awal" class="form-control col-2 ml-3">
-          <span class="ml-3">s.d</span>
-          <input type="date" name="tgl_akhir" class="form-control col-2 ml-3" onchange="filter()">
+        <div class="d-flex w-100 justify-content-between align-items-center mb-2">
+          <div class="d-flex align-items-center">
+            <span>Filter: </span>
+            <select name="tgl" id="tgl" class="form-control ml-3">
+              <option value="0" selected disabled>-Pilih-</option>
+              <option value="tgl_acara">Tanggal Acara</option>
+              <option value="tgl_kembali">Tanggal Pengembalian</option>
+            </select>
+            <input type="date" name="tgl_awal" class="form-control ml-3">
+            <span class="ml-3">s.d</span>
+            <input type="date" name="tgl_akhir" class="form-control ml-3" onchange="filter()">
+          </div>
+          <div class="d-flex align-items-center justify-content-end">
+            <span>Kategori: </span>
+            <select name="kategori" id="kategori" class="form-control ml-3" onchange="filterKategori()">
+              <option value="0" selected disabled>-Pilih-</option>
+              @foreach ($kategori as $item)
+              <option value="{{ $item->id }}">{{ $item->nama }}</option>
+              @endforeach
+            </select>
+          </div>
         </div>
           <table class="table">
               <thead>
@@ -111,6 +122,23 @@
         }
       });
     }
+  }
+</script>
+
+<script>
+  var kategori = document.querySelector('select[name=kategori]');
+  function filterKategori(){
+    $.ajax({
+      url: "{{ route('admin.pesanan.filter.kategori') }}",
+      type: 'post',
+      data: {
+        _token : "{{ csrf_token() }}",
+        kategori: kategori.value
+      },
+      success: function(data){
+        document.querySelector('#tbody').innerHTML = data;
+      }
+    })
   }
 </script>
 

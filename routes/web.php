@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminProdukController;
 use App\Http\Controllers\Admin\AdminPesananController;
 use App\Http\Controllers\Admin\AdminKategoriController;
 use App\Http\Controllers\Admin\AdminPaketController;
+use App\Http\Controllers\Admin\AdminPengembalianController;
 use App\Http\Controllers\User\TransaksiUserController;
 
 /*
@@ -60,6 +61,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function(
     Route::prefix('pesanan')->group(function(){
         Route::get('/', [AdminPesananController::class, 'index'])->name('admin.pesanan');
         Route::post('filter', [AdminPesananController::class, 'filter'])->name('admin.pesanan.filter');
+        Route::post('filter/kategori', [AdminPesananController::class, 'filterKategori'])->name('admin.pesanan.filter.kategori');
         Route::get('/respons/{id}', [AdminPesananController::class, 'detail'])->name('admin.pesanan.respons');
         Route::get('/{id}/terima', [AdminPesananController::class, 'terima'])->name('admin.pesanan.terima');
         Route::get('/{id}/tolak', [AdminPesananController::class, 'tolak'])->name('admin.pesanan.tolak');
@@ -96,7 +98,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function(
         Route::get('/hapus/{id}', [AdminGaleriController::class, 'delete'])->name('admin.galeri.hapus');
     });
     Route::prefix('pengembalian')->group(function(){
-        Route::get('/', [AdminPesananController::class, 'index'])->name('admin.pengembalian');
+        Route::get('/', [AdminPengembalianController::class, 'index'])->name('admin.pengembalian');
     });
     Route::prefix('laporan')->group(function(){
         Route::get('penyewaan', [AdminPesananController::class, 'index'])->name('admin.laporan.penyewaan');
