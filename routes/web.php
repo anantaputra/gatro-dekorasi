@@ -5,14 +5,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\User\ProfilUserController;
+use App\Http\Controllers\Admin\AdminPaketController;
 use App\Http\Controllers\User\PesananUserController;
 use App\Http\Controllers\Admin\AdminGaleriController;
 use App\Http\Controllers\Admin\AdminProdukController;
+use App\Http\Controllers\Admin\AdminLaporanController;
 use App\Http\Controllers\Admin\AdminPesananController;
-use App\Http\Controllers\Admin\AdminKategoriController;
-use App\Http\Controllers\Admin\AdminPaketController;
-use App\Http\Controllers\Admin\AdminPengembalianController;
 use App\Http\Controllers\User\TransaksiUserController;
+use App\Http\Controllers\Admin\AdminKategoriController;
+use App\Http\Controllers\Admin\AdminPengembalianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,7 +104,12 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function(
         Route::post('/', [AdminPengembalianController::class, 'store'])->name('admin.pengembalian.simpan');
     });
     Route::prefix('laporan')->group(function(){
-        Route::get('penyewaan', [AdminPesananController::class, 'index'])->name('admin.laporan.penyewaan');
-        Route::get('pengembalian', [AdminPesananController::class, 'index'])->name('admin.laporan.pengembalian');
+        Route::get('penyewaan', [AdminLaporanController::class, 'penyewaan'])->name('admin.laporan.penyewaan');
+        Route::get('cetak-penyewaan', [AdminLaporanController::class, 'cetakPenyewaan'])->name('admin.laporan.penyewaan.cetak');
+        Route::get('pengembalian', [AdminLaporanController::class, 'pengembalian'])->name('admin.laporan.pengembalian');
+        Route::get('cetak-pengembalian', [AdminLaporanController::class, 'cetakPengembalian'])->name('admin.laporan.pengembalian.cetak');
     });
+
+    Route::post('/filter-sewa', [AdminLaporanController::class, 'filterSewa'])->name('filter.sewa');
+    Route::post('/filter-kembali', [AdminLaporanController::class, 'filterKembali'])->name('filter.kembali');
 });
