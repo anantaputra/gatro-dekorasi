@@ -66,7 +66,7 @@
                       <span class="badge badge-danger">{{ $data->status }}</span>    
                       @elseif ($data->status == 'menunggu DP')                  
                       <span class="badge badge-primary">{{ $data->status }}</span>
-                      @elseif ($data->status == 'DP Masuk')                  
+                      @elseif ($data->status == 'booking')                  
                       <span class="badge badge-success">{{ $data->status }}</span>
                       @endif
                     </td>
