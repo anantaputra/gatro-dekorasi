@@ -13,7 +13,7 @@ class MidtransSnapController extends Controller
     public static function snap($kd_transaksi, $total, $nama, $email)
     {
         // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = 'SB-Mid-server-b6rcWtmyXKvX39nh70fMzV5P';
+        \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
         // Set sanitization on (default)
@@ -40,7 +40,7 @@ class MidtransSnapController extends Controller
     public function handler(Request $request)
     {
         $json = json_decode($request->getContent());
-        $signature = hash('sha512', $json->order_id . $json->status_code . $json->gross_amount . env('MIDTRANS_SERVER_KEY_NO_HASH'));
+        $signature = hash('sha512', $json->order_id . $json->status_code . $json->gross_amount . env('MIDTRANS_SERVER_KEY'));
 
         if($signature != $json->signature_key){
             abort(401);
