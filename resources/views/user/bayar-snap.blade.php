@@ -22,15 +22,15 @@
           onSuccess: function(result){
             /* You may add your own implementation here */
             // alert("payment success!"); 
-            console.log(result);
-            // send_response_to_form(result);
+            // console.log(result);
+            send_response_to_form(result);
             // window.location = "{{ route('user.pesanan') }}";
           },
           onPending: function(result){
             /* You may add your own implementation here */
             // alert("wating your payment!"); 
-            console.log(result);
-            // send_response_to_form(result);
+            // console.log(result);
+            send_response_to_form(result);
             // console.log(result)
             // window.location = "{{ route('user.pesanan') }}";
           },
@@ -44,8 +44,8 @@
             /* You may add your own implementation here */
             // alert('you closed the popup without finishing the payment');
             // send_response_to_form(result);
-            // window.location = "{{ route('user.pesanan') }}";
-            console.log(result)
+            window.location = "{{ route('user.pesanan') }}";
+            // console.log(result)
           }
         })
 
