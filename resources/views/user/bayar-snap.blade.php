@@ -4,7 +4,7 @@
     <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
     <script type="text/javascript"
       src="https://app.sandbox.midtrans.com/snap/snap.js"
-      data-client-key="SB-Mid-client-kg7ESatio1iCaYc_"></script>
+      data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
     <!-- Note: replace with src="https://app.midtrans.com/snap/snap.js" for Production environment -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
   </head>
