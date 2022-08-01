@@ -22,6 +22,8 @@ class CreateTransaksiTable extends Migration
             $table->string('payment_type')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_pesanan')->references('id')->on('pesanan');
         });
     }
 

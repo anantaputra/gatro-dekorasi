@@ -23,6 +23,8 @@ class CreatePaketTable extends Migration
             $table->text('keterangan')->nullable();
             $table->text('deskripsi')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_kategori')->references('id')->on('kategori');
         });
     }
 
