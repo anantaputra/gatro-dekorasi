@@ -98,6 +98,7 @@ class AdminPesananController extends Controller
             </td>
         </tr>  
         <?php
+            $no++;
         }
     }
 
@@ -154,6 +155,7 @@ class AdminPesananController extends Controller
             </td>
         </tr>  
         <?php
+        $no++;
         }
     }
 }
