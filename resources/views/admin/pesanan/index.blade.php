@@ -21,14 +21,14 @@
         <div class="d-flex w-100 justify-content-between align-items-center mb-2">
           <div class="d-flex align-items-center">
             <span>Filter: </span>
-            <select name="tgl" id="tgl" class="form-control ml-3">
+            <select name="tgl" id="tgl" class="form-control ml-3"> <!--ini adl element select yg name nya tgl-->
               <option value="0" selected disabled>-Pilih-</option>
               <option value="tgl_acara">Tanggal Acara</option>
               <option value="tgl_kembali">Tanggal Pengembalian</option>
             </select>
-            <input type="date" name="tgl_awal" class="form-control ml-3">
+            <input type="date" name="tgl_awal" class="form-control ml-3"> <!--ini adl element input yg name nya tgl_awal-->
             <span class="ml-3">s.d</span>
-            <input type="date" name="tgl_akhir" class="form-control ml-3" onchange="filter()">
+            <input type="date" name="tgl_akhir" class="form-control ml-3" onchange="filter()"> <!--ini adl element input yg name nya tgl_akhir-->
           </div>
           <div class="d-flex align-items-center justify-content-end">
             <span>Kategori: </span>
@@ -54,7 +54,7 @@
                   <td scope="col">Aksi</td>
                 </tr>
               </thead>
-              <tbody id="tbody">
+              <tbody id="tbody"> <!--Elment dengan id tbody-->
                 @php
                     $no = 1;
                 @endphp
@@ -104,22 +104,22 @@
 </div>
 
 <script>
-  var tgl = document.querySelector('select[name=tgl]');
-  var awal = document.querySelector('input[type=date][name=tgl_awal]');
-  var akhir = document.querySelector('input[type=date][name=tgl_akhir]');
+  var tgl = document.querySelector('select[name=tgl]'); // buat variable tgl yg isinya element select dengan name tgl
+  var awal = document.querySelector('input[type=date][name=tgl_awal]'); // buat variable tgl yg isinya element input type date dengan name tgl_awal
+  var akhir = document.querySelector('input[type=date][name=tgl_akhir]'); // buat variable tgl yg isinya element input type date dengan name tgl_akhir
   function filter(){
     if(tgl.value != 0 && awal.value != null){
-      $.ajax({
-        url: "{{ route('admin.pesanan.filter') }}",
-        type: "post",
-        data: {
-          _token: "{{ csrf_token() }}",
+      $.ajax({ // memanggil fungsi ajax untuk send data atau form pada jquery
+        url: "{{ route('admin.pesanan.filter') }}", // url atau tujuan data dikirim ke route admin.pesanan.filter
+        type: "post", // tipe pengiriman data atau form berupa post
+        data: { // isi data atau form yg dikirimkan
+          _token: "{{ csrf_token() }}", // csrf token
           tgl: tgl.value,
           awal: awal.value,
           akhir: akhir.value
         },
-        success: function(data){
-          document.querySelector('#tbody').innerHTML = data;
+        success: function(data){ // ketika sukses maka jalankan fungsi 
+          document.querySelector('#tbody').innerHTML = data; // isi HTML dari element dengan id tbody ditimpa dengan data yang didapatkan dari proses pengiriman form
           // console.log(data)
         }
       });
