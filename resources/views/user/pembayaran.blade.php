@@ -109,15 +109,15 @@
     </form>
 
 <script>
-    var bayar = $('input[name=bayar]');
-    bayar.on('change', function(){
-        var val = $('input[name=bayar]:checked').val();
-        if(val == 'dp'){
-            $('input[name=nominal]').removeClass('d-none');
-            $('input[name=nominal]').val(1000000);
-            var nomi = $('input[name=nominal]').val();
-            $('#nominal-dp').html('Dp : '+formatRupiah(nomi, "Rp"));
-            var harga = parseInt("{{ $pesanan->paketnya->harga }}");
+    var bayar = $('input[name=bayar]'); // buat variabel bayar yg isinya adl element input dg name=bayar
+    bayar.on('change', function(){ // ketika element input dg name=bayar berubah
+        var val = $('input[name=bayar]:checked').val(); // buat variabel val yg isinya adl nilai atau value dari element input dg name=bayar yg dicheck atau centang
+        if(val == 'dp'){ // jika val isinya dp jalankan fungsi dibawah
+            $('input[name=nominal]').removeClass('d-none'); // hapus kelas d-none pada element input dg name=nominal
+            $('input[name=nominal]').val(1000000); // isi element input dg name=nominal dengan 1000000
+            var nomi = $('input[name=nominal]').val(); // buat variabel nomi yg isinya nilai atau value dari element input dg name=nominal
+            $('#nominal-dp').html('Dp : '+formatRupiah(nomi, "Rp")); // ubah isi HTML pada element yg id nya nominal-dp dengan Dp : Rp 1.000.000
+            var harga = parseInt("{{ $pesanan->paketnya->harga }}"); // buat variabel harga yg isinya harga dari paket
             var dp = parseInt(nomi);
             var sisa = (harga - dp).toString();
             $('#sisa-bayar').html('Sisa : '+formatRupiah(sisa, "Rp"));

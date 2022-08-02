@@ -51,41 +51,41 @@
 
 <script>
     $(function(){
-        var dtToday = new Date();
-        var month = dtToday.getMonth() + 1;
-        var day = dtToday.getDate();
-        var year = dtToday.getFullYear();
-        if(month < 10)
-            month = '0' + month.toString();
-        if(day < 10)
-            day = '0' + day.toString();
+        var dtToday = new Date(); // buat variabel dtToday yg isinya memanggil fungsi new Date js
+        var month = dtToday.getMonth() + 1; // mengambil data bulan ini dengan fungsi getMonth() namun harus ditambah 1 karena hasil dari getMonth() dimulai dari 0 sedangkan bulan kita dimulai dari 1
+        var day = dtToday.getDate(); // mengambil data tgl hari ini
+        var year = dtToday.getFullYear(); // mengambil data tahun hari ini
+        if(month < 10) // jika bulan yg didapatkan kurang dari 10
+            month = '0' + month.toString(); // tambahkan 0 didepan angkanya
+        if(day < 10) // jika tgl yg didapatkan kurang dari 10
+            day = '0' + day.toString(); // tambahkan 0 didepan angkanya
         
-        var maxDate = year + '-' + month + '-' + day;
-        $('#tgl_acara').attr('min', maxDate);
-        $('#tgl_acara').on('change', function(){
-            const acara =  $('#tgl_acara').val();
-            console.log(acara);
-            $('#tgl_kembali').attr('min', acara);
+        var maxDate = year + '-' + month + '-' + day; // buat variabel maxDate dengan format YYYY-mm-dd
+        $('#tgl_acara').attr('min', maxDate); // tambahkan atribut min pada element dg id tgl_acara
+        $('#tgl_acara').on('change', function(){ // ketika element dg id tgl_acara berubah jalankan fungsi dibawah ini
+            const acara =  $('#tgl_acara').val(); // buat variabel acara = value atau nilai dari element dg id tgl_acara
+            // console.log(acara);
+            $('#tgl_kembali').attr('min', acara); // tambahkan atribut min pada element dg id tgl_kembali
             var acaraDay = new Date(acara);
             var monthAcara = acaraDay.getMonth() + 1;
-            var dayAcara = acaraDay.getDate() + 3;
+            var dayAcara = acaraDay.getDate() + 3; // mengambil data tgl hari ini + 3 atau 3 hari kedepan
             var yearAcara = acaraDay.getFullYear();
             if(monthAcara < 10)
                 monthAcara = '0' + monthAcara.toString();
             if(dayAcara < 10)
                 dayAcara = '0' + dayAcara.toString();
-            var jml = new Date(yearAcara, monthAcara, 0).getDate();
-            if(dayAcara > jml){
-                dayAcara = dayAcara - jml;
-                monthAcara = acaraDay.getMonth() + 2;
+            var jml = new Date(yearAcara, monthAcara, 0).getDate(); // dapatkan jml hari dlm 1 bulan ini
+            if(dayAcara > jml){ // jika tgl acara lebih besar dari jml hari dlm 1 bulan ini 
+                dayAcara = dayAcara - jml; // tgl acara = tgl acara - jml hari dlm 1 bulan atau dlm kata lain ini akan mendapatkan hari2 awal bulan
+                monthAcara = acaraDay.getMonth() + 2; // dapatkan bulan depan makanya +2 karena kalo +1 itu bulan saat ini
                 if(monthAcara < 10)
                     monthAcara = '0' + monthAcara.toString();
                 if(dayAcara < 10)
                     dayAcara = '0' + dayAcara.toString();
             }
-            var maxDateKembali = (yearAcara + '-' + monthAcara + '-' +dayAcara)
-            console.log(maxDateKembali)
-            $('#tgl_kembali').attr('max', maxDateKembali);
+            var maxDateKembali = (yearAcara + '-' + monthAcara + '-' +dayAcara) // buat variabel maxDateKembali atau batas maksimal pengembalian
+            // console.log(maxDateKembali)
+            $('#tgl_kembali').attr('max', maxDateKembali); // set atrribut max pada element id tgl_kembali jadi ini akan membatasi tanggal agar tidak melebihi tgl maxDateKembali atau dlm kata lain membuat tgl lain menjadi tidak dapat diakses atau dipilih
         })
     });
 </script>

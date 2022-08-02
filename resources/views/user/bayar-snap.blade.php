@@ -17,47 +17,39 @@
  
   <body>
  
-    <form action="{{ route('update.pembayaran') }}" method="POST" id="submit_form">
+    <form action="{{ route('update.pembayaran') }}" method="POST" id="submit_form"> <!--form yg memiliki id submit_form-->
       @csrf
       <input type="hidden" name="id" value="{{ $snapToken }}">
-      <input type="hidden" name="json" id="json_callback">
+      <input type="hidden" name="json" id="json_callback"> <!--element yg memiliki id json_callback-->
     </form>
 
     <script type="text/javascript">
-      window.snap.pay('{{ $snapToken }}', {
+      window.snap.pay('{{ $snapToken }}', { // ini fungsi yg emg disarankan dipake oleh midtrans jika gunakan snap
           onSuccess: function(result){
             /* You may add your own implementation here */
-            // alert("payment success!"); 
-            // console.log(result);
-            send_response_to_form(result);
-            // window.location = "{{ route('user.pesanan') }}";
+            // alert("payment success!"); console.log(result)
+            send_response_to_form(result); // panggil fungsi send_response_to_form dibawah
           },
           onPending: function(result){
             /* You may add your own implementation here */
-            // alert("wating your payment!"); 
-            // console.log(result);
-            send_response_to_form(result);
-            // console.log(result)
-            // window.location = "{{ route('user.pesanan') }}";
+            // alert("wating your payment!"); console.log(result)
+            send_response_to_form(result); // panggil fungsi send_response_to_form dibawah
           },
           onError: function(result){
             /* You may add your own implementation here */
             // alert("payment failed!"); console.log(result);
-            send_response_to_form(result);
-            // window.location = "{{ route('user.pesanan') }}";
+            send_response_to_form(result); // panggil fungsi send_response_to_form dibawah
           },
-          onClose: function(result){
+          onClose: function(){
             /* You may add your own implementation here */
             // alert('you closed the popup without finishing the payment');
-            // send_response_to_form(result);
-            window.location = "{{ route('user.pesanan') }}";
-            // console.log(result)
+            window.location = "{{ route('user.pesanan') }}"; // akan diarahkan ke route user.pesanan
           }
         })
 
-        function send_response_to_form(result) {
-          document.getElementById('json_callback').value = JSON.stringify(result);
-          $('#submit_form').submit();
+        function send_response_to_form(result) { // fungsi send_response_to_form
+          document.getElementById('json_callback').value = JSON.stringify(result); // ubah data yg didapat dari midtrans menjadi format JSON dan simpan ke element yg id nya json_callback
+          $('#submit_form').submit(); // kirim form yg memiliki id submit_form
         }
     </script>
   </body>
