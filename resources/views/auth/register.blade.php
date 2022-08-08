@@ -130,6 +130,14 @@
                                         </button>
                                     </div>
                                 </div>
+
+                                <div class="row mt-4 mb-0">
+                                    <div class="col-12">
+                                        <div>
+                                            <p>Sudah punya akun? <a href="{{ route('login')}}">Login</a></p> 
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>

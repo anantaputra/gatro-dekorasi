@@ -77,6 +77,14 @@
                                 </div>
                             </div>
 
+                            <div class="row mt-4 mb-0">
+                                <div class="w-100">
+                                    <div class="px-3">
+                                        <p>Belum punya akun? <a href="{{ route('register')}}">Daftar</a></p> 
+                                    </div>
+                                </div>
+                            </div>
+
                         </form>
                     </div>
                 </div>
