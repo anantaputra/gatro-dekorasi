@@ -11,10 +11,13 @@ class Transaksi extends Model
 
     protected $table = 'transaksi';
 
+    // semua boleh diisi
     protected $guarded = [];
 
+    // menonaktfikan increment
     public $incrementing = false;
     
+    // menjadikan kd_transaksi primary key untuk d panggil di Controller (find($kd_transaksi))
     protected $primaryKey = 'kd_transaksi';
 
     public function pesanannya()
