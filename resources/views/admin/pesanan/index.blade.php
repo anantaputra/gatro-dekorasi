@@ -7,12 +7,12 @@
   <div class="pr-5">
     <div class="container pr-5">
       <div class="mt-4">
-        <h3>Pesanan</h3>
+        <h3>Penyewaan</h3>
         <div class="mt-4">
           <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Admin</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Pesanan</li>
+                <li class="breadcrumb-item active" aria-current="page">Penyewaan</li>
               </ol>
           </nav>
         </div>
