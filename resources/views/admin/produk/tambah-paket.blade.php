@@ -18,7 +18,7 @@
         </div>
         <div class="form-group w-100">
           <label for="inputState">Kategori</label>
-          <select id="kategori" class="form-control" name="kategori">
+          <select id="kategori" class="form-control" name="kategori" disabled>
             <option disabled selected>--Pilih Kategori--</option>
             @if (isset($kategoris))
                 

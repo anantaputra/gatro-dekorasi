@@ -122,7 +122,6 @@ class AdminPaketController extends Controller
         $paket->nama = $request->nama;
         $paket->harga = $request->harga;
         $paket->jml_tamu = $request->jml_tamu;
-        $paket->id_kategori = $request->kategori;
         $paket->isi_paket = '';
         $paket->keterangan = '';
         if($request->has('checkbox')){
