@@ -12,7 +12,7 @@
             <div class="mt-4">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                      <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Admin</a></li>
                       <li class="breadcrumb-item active" aria-current="page">Produk</li>
                     </ol>
                 </nav>

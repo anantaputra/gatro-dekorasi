@@ -11,7 +11,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <link rel="icon" href="{{ asset('img/logogatro.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('img/gatronav1.png') }}" type="image/x-icon">
 
     <!-- Link Swiper's CSS -->
 
