@@ -91,7 +91,7 @@
                         <div class="w-100">     
                             <h5 class="card-title">PENYEWAAN</h5>
                             <h3 class="card-text">{{ $penyewaan }}</h3>
-                            <a href="">Lihat Detail <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                            <a href="{{ route('admin.pesanan') }}">Lihat Detail <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
                                 <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
                                 </svg>
@@ -114,7 +114,7 @@
                         <div class="w-100">
                             <h5 class="card-title">PENGEMBALIAN</h5>
                             <h3 class="card-text">{{ $pengembalian }}</h3>
-                            <a href="">Lihat Detail <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                            <a href="{{ route('admin.pengembalian') }}">Lihat Detail <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
                                 <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
                                 </svg>
