@@ -44,6 +44,7 @@
             <input type="text" class="form-control" value="{{ $paket->jml_tamu }}" name="jml_tamu" id="inputTamu" placeholder="100">
           </div>
         </div>
+        @if ($paket->kategorinya->nama != 'Lain-lain')    
         <div class="form-group w-100" id="detail-barang">
           <label for="inputAddress">Detail</label>
           @php
@@ -68,6 +69,7 @@
           @endphp
           @endforeach
         </div>
+        @endif
       </div>
       {{-- bagian kanan --}}
       <div class="ml-5 w-100">

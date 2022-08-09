@@ -125,16 +125,18 @@ class AdminPaketController extends Controller
         $paket->id_kategori = $request->kategori;
         $paket->isi_paket = '';
         $paket->keterangan = '';
-        $checked    = $request->checkbox;
-        $data       = $request->detail;
-        $keterangan = $request->keterangan;
-        foreach ($data as $key => $value) {
-            if (in_array($data[$key], $checked)) {
-                $paket->isi_paket .= $data[$key].',';
-                $paket->keterangan .= $keterangan[$key].',';
-            } else {
-                $paket->isi_paket .= ',';
-                $paket->keterangan .= ',';
+        if($request->has('checkbox')){
+            $checked    = $request->checkbox;
+            $data       = $request->detail;
+            $keterangan = $request->keterangan;
+            foreach ($data as $key => $value) {
+                if (in_array($data[$key], $checked)) {
+                    $paket->isi_paket .= $data[$key].',';
+                    $paket->keterangan .= $keterangan[$key].',';
+                } else {
+                    $paket->isi_paket .= ',';
+                    $paket->keterangan .= ',';
+                }
             }
         }
         $paket->save();
