@@ -13,9 +13,9 @@ class AdminProdukController extends Controller
 {
     public function index()
     {
-        $produk = Produk::paginate(5); // ambil data produk pagination 5
+        $produk = Produk::paginate(10); // ambil data produk pagination 5
 
-        $pakets = Paket::paginate(5); // ambil data paket pagination 5
+        $pakets = Paket::paginate(10); // ambil data paket pagination 5
 
         return view('admin.produk.index', compact('pakets', 'produk'));
     }
