@@ -63,7 +63,7 @@
                 @foreach ($pesanan as $data)  
                 <tr>
                     <th scope="row">{{$no}}</th>
-                    <td class="text-nowrap">{{ $data->user->nama}}</td>
+                    <td class="text-nowrap">{{ $data->user->name}}</td>
                     <td class="text-nowrap">{{ $data->paketnya->nama}}</td>
                     <td>{{ $data->paketnya->kategorinya->nama}}</td>
                     <td>{{ $data->lokasi }}</td>
