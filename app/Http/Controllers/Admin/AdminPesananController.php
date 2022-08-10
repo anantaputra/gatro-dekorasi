@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Pesanan;
-use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\User;
 use App\Http\Controllers\Util\KonversiController;
+use App\Models\Kategori;
 
 class AdminPesananController extends Controller
 {
@@ -16,8 +15,6 @@ class AdminPesananController extends Controller
         $pesanan = Pesanan::latest()->paginate(10);
 
         $kategori = Kategori::all();
-
-        $user = User::all();
         
         return view('admin.pesanan.index', compact('pesanan', 'kategori'));
     }
@@ -59,7 +56,6 @@ class AdminPesananController extends Controller
         ?>
         <tr>
             <th scope="row"><?=$no?></th>
-            <td class="text-nowrap"><?= $data->user->name?></td>
             <td class="text-nowrap"><?= $data->paketnya->nama?></td>
             <td><?= $data->paketnya->kategorinya->nama?></td>
             <td><?= $data->lokasi ?></td>

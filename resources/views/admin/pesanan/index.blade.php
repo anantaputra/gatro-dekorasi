@@ -44,7 +44,6 @@
               <thead>
                 <tr>
                   <td scope="col">No</td>
-                  <td scope="col" class="text-nowrap">Nama Pemesan</td>
                   <td scope="col" class="text-nowrap">Nama Paket</td>
                   <td scope="col" class="text-nowrap">Kategori Paket</td>
                   <td scope="col" class="text-nowrap">Lokasi Acara</td>
@@ -63,7 +62,6 @@
                 @foreach ($pesanan as $data)  
                 <tr>
                     <th scope="row">{{$no}}</th>
-                    <td class="text-nowrap">{{ $data->user->name}}</td>
                     <td class="text-nowrap">{{ $data->paketnya->nama}}</td>
                     <td>{{ $data->paketnya->kategorinya->nama}}</td>
                     <td>{{ $data->lokasi }}</td>
