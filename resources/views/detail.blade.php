@@ -33,7 +33,7 @@
                 <div class="w-100 d-flex mt-3">   
                     <?php $i = 1; ?>
                     @foreach ($gambar as $image)
-                        <img onclick="showModel({{$i}})" id="img-sm-{{$i}}" src="{{ asset('paket/detail/'.$image->img.'')}}" width="80px" height="80px">
+                        <img onclick="showModel({{$i}})" id="img-sm-{{$i}}" src="{{ asset('paket/detail/'.$image->gambar.'')}}" width="80px" height="80px">
                         <div class="mr-3"></div>
                         <?php $i++; ?>
                     @endforeach

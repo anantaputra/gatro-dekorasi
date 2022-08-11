@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- template bagian kanan halaman --}}
-<div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+<div class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-2">
   <div class="pr-5">
     <div class="container pr-5">
       <div class="mt-4">
@@ -44,7 +44,6 @@
               <thead>
                 <tr>
                   <td scope="col">No</td>
-                  <td scope="col" class="text-nowrap">Nama Penyewa</td>
                   <td scope="col" class="text-nowrap">Nama Paket</td>
                   <td scope="col" class="text-nowrap">Kategori Paket</td>
                   <td scope="col" class="text-nowrap">Lokasi Acara</td>
@@ -63,7 +62,6 @@
                 @foreach ($pesanan as $data)  
                 <tr>
                     <th scope="row">{{$no}}</th>
-                    <td class="text-nowrap">{{ $data->usernya->nama}}</td>
                     <td class="text-nowrap">{{ $data->paketnya->nama}}</td>
                     <td>{{ $data->paketnya->kategorinya->nama}}</td>
                     <td>{{ $data->lokasi }}</td>
@@ -80,14 +78,16 @@
                       @elseif ($data->status == 'dibatalkan')
                       <span class="badge badge-danger">{{ $data->status }}</span>    
                       @elseif ($data->status == 'menunggu DP')                  
-                      <span class="badge badge-primary">{{ $data->status }}</span>
+                      <span class="badge badge-secondary">{{ $data->status }}</span>
                       @elseif ($data->status == 'booking')                  
-                      <span class="badge badge-success">{{ $data->status }}</span>
+                      <span class="badge badge-info">{{ $data->status }}</span>
                       @endif
                     </td>
                     <td>
                     @if ($data->status == 'menunggu')
                       <a href="{{ route('admin.pesanan.respons' , ['id' => $data->id]) }}" class="btn btn-primary">Respons</a>
+                    @elseif ($data->status == ('booking' || 'diterima'))
+                    <a href="{{ route('admin.pesanan.respons' , ['id' => $data->id]) }}" class="btn btn-outline-dark">Detail</a>
                     @endif
                     </td>
                 </tr>

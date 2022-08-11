@@ -19,6 +19,7 @@
         </div>
       </div>
       <div class="mt-3">
+        <div>Nama Penyewa : {{ $pesanan->usernya->nama}}</div>
         <div>Nama Paket : {{ $pesanan->paketnya->nama}}</div>
         <div>Kategori: {{ $pesanan->paketnya->kategorinya->nama }}</div>
         <div>Harga: Rp {{ number_format($pesanan->paketnya->harga, 0, '', '.') }}</div>

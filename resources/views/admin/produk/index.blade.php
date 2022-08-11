@@ -105,7 +105,6 @@
                   <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama Produk</th>
-                    <th scope="col">Harga</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
@@ -119,11 +118,6 @@
                             <tr>
                             <th scope="row">{{$no}}</th>
                             <td>{{ $produks->nama_produk }}</td>
-                            @php
-                                $harga = $produks->harga;
-                                $harga = number_format($harga, 0, '', '.')
-                            @endphp
-                            <td>Rp. {{ $harga }}</td>
                             <td>
                                 {{-- edit --}}
                                 <a class="btn btn-success text-white" href="{{ route('admin.produk.ubah', ['id' => $produks->id ]) }}" role="button">

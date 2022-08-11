@@ -38,6 +38,16 @@ class PesananUserController extends Controller
             'nama_paket' => 'required',
             'catatan' => 'nullable',
         ]);
+        
+        $check = Pesanan::where('id_paket', $request->nama_paket)
+                ->where('status', 'booking')
+                ->where('tgl_acara', date('Y-m-d', strtotime($request->tgl_acara)))
+                ->orWhere('tgl_kembali', date('Y-m-d', strtotime($request->tgl_acara)))
+                ->first();
+        
+        if ($check) {
+            return redirect()->back()->with('booked', 'Maaf pesanan anda tidak dapat diproses, karena pada tanggal tersebut sudah dipesan');
+        }
 
         $pesanan = new Pesanan();
         $pesanan->id_user = auth()->user()->id;
@@ -47,7 +57,6 @@ class PesananUserController extends Controller
         $pesanan->tgl_acara = date('Y-m-d', strtotime($request->tgl_acara));
         $pesanan->tgl_kembali = date('Y-m-d', strtotime($request->tgl_kembali));
         $pesanan->catatan = $request->catatan;
-        $pesanan->nama = $request->nama;
         $pesanan->save();
 
         return redirect()->route('user.pesanan')->with('success', 'Saat ini pesananmu sedang menunggu jawaban dari admin');

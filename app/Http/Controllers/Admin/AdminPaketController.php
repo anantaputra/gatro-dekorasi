@@ -64,7 +64,7 @@ class AdminPaketController extends Controller
                 $request->file('gambar-'.$i)->move(public_path(). '/paket/detail', $filename);//simpan fotonya ke folder public/produk/detail
                 $gambar = new GambarPaket();
                 $gambar->id_paket = $paket->id;
-                $gambar->img = $filename;
+                $gambar->gambar = $filename;
                 $gambar->save();
             }
         }
@@ -101,19 +101,19 @@ class AdminPaketController extends Controller
                     $move = $request->file('gambar-'.$i)->move(public_path(). '/paket/detail', $filename);
                     if ($move){
                         File::delete(public_path(). '/paket/detail/'.$request->input('picture_'.$i));
-                        GambarPaket::where('id', $gambar[$i-1]->id)->update(['img' => $filename]);
+                        GambarPaket::where('id', $gambar[$i-1]->id)->update(['gambar' => $filename]);
                     }
                 } else {
                     $filename = date('Ymd') . $request->file('gambar-'.$i)->getClientOriginalName();
                     $move = $request->file('gambar-'.$i)->move(public_path(). '/paket/detail', $filename);
                     $gambar = new GambarPaket();
                     $gambar->id_paket = $paket->id;
-                    $gambar->img = $filename;
+                    $gambar->gambar = $filename;
                     $gambar->save();
                 }
             } else {
                 if (isset($gambar[$i-1]) && $request->input('picture_'.$i) == null){
-                    File::delete(public_path(). '/paket/detail/'.$gambar[$i-1]->img);
+                    File::delete(public_path(). '/paket/detail/'.$gambar[$i-1]->gambar);
                     $gambar[$i-1]->delete();
                 }
             }

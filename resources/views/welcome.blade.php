@@ -43,8 +43,8 @@
                                                                 <div class="row mb-4">
                                                                     <div class="col-3" style="">
                                                                         <div class="card animate__animated animate__bounceInLeft" style="width: 17rem; height:18rem; box-shadow: 8px black">
-                                                                            @if (isset($paket->banner->img))
-                                                                                <img class="" src="{{ asset('paket/detail/'.$paket->banner->img.'')}}" height="170px" alt="">
+                                                                            @if (isset($paket->banner->gambar))
+                                                                                <img class="" src="{{ asset('paket/detail/'.$paket->banner->gambar.'')}}" height="170px" alt="">
                                                                             @endif
                                                                             <div class="ml-2 mt-2 mb-3 text-dark " style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
                                                                             {{ $paket->nama }} <br> by. Gatro Dekorasi
@@ -84,8 +84,8 @@
                                                                 <div class="col mb-4">
                                                                     <div class="shadow-lg">
                                                                         <div class="card animate__animated animate__bounceInLeft" style="width: 17rem; height:18rem; box-shadow: 8px black">
-                                                                            @if (isset($paket->banner->img))
-                                                                                <img class="" src="{{ asset('paket/detail/'.$paket->banner->img.'')}}" height="170px" alt="">
+                                                                            @if (isset($paket->banner->gambar))
+                                                                                <img class="" src="{{ asset('paket/detail/'.$paket->banner->gambar.'')}}" height="170px" alt="">
                                                                             @endif
                                                                             <div class="ml-2 mt-2 mb-3 text-dark" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
                                                                             {{ $paket->nama }} <br> by. Gatro Dekorasi
@@ -125,8 +125,8 @@
                                                             <div class="col mb-4">
                                                                 <div class="shadow-lg">
                                                                     <div class="card animate__animated animate__bounceInLeft" style="width: 17rem; height:18rem; box-shadow: 8px black">
-                                                                        @if (isset($paket->banner->img))
-                                                                            <img class="" src="{{ asset('paket/detail/'.$paket->banner->img.'')}}" height="170px" alt="">
+                                                                        @if (isset($paket->banner->gambar))
+                                                                            <img class="" src="{{ asset('paket/detail/'.$paket->banner->gambar.'')}}" height="170px" alt="">
                                                                         @endif
                                                                         <div class="ml-2 mt-2 mb-3 text-dark" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
                                                                         {{ $paket->nama }} <br> by. Gatro Dekorasi
