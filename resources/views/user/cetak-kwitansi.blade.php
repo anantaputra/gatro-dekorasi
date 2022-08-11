@@ -26,6 +26,9 @@
             <div class="d-flex justify-content-center my-3">
                 <h4>Kwitansi Pembayaran</h4>
             </div>
+            <div class="d-flex justify-content-left my-3">
+              {{ date('Y-m-d H:i:s') }}
+            </div>
             <div class="mt-4 pt-2">
                 
                 <table class="table table-bordered">
