@@ -14,11 +14,10 @@ class CreatePesananTable extends Migration
     public function up()
     {
         Schema::create('pesanan', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_user');
-            $table->foreignId('id_paket');
-            $table->string('nama');
-            $table->string('lokasi');
+            $table->integer('id')->autoIncrement()->length(11);
+            $table->integer('id_user')->length(11);
+            $table->integer('id_paket')->length(11);
+            $table->string('lokasi', 20);
             $table->text('alamat_acara');
             $table->date('tgl_acara');
             $table->date('tgl_kembali');

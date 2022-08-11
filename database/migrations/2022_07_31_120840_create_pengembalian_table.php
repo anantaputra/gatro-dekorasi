@@ -14,9 +14,10 @@ class CreatePengembalianTable extends Migration
     public function up()
     {
         Schema::create('pengembalian', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_pesanan');
+            $table->integer('id')->autoIncrement()->length(11);
+            $table->integer('id_pesanan')->length(11);
             $table->integer('denda')->nullable();
+            $table->string('keterangan', 255)->nullable();
             $table->timestamps();
 
             $table->foreign('id_pesanan')->references('id')->on('pesanan');

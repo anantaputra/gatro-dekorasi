@@ -14,9 +14,9 @@ class CreateGambarProdukTable extends Migration
     public function up()
     {
         Schema::create('gambar_produk', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_produk');
-            $table->string('img');
+            $table->integer('id')->autoIncrement()->length(11);
+            $table->integer('id_produk')->length(11);
+            $table->string('gambar');
             $table->timestamps();
 
             $table->foreign('id_produk')->references('id')->on('produk');

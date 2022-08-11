@@ -14,9 +14,9 @@ class CreateGambarPaketTable extends Migration
     public function up()
     {
         Schema::create('gambar_paket', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_paket');
-            $table->string('img');
+            $table->integer('id')->autoIncrement()->length(11);
+            $table->integer('id_paket')->length(11);
+            $table->string('gambar');
             $table->timestamps();
 
             $table->foreign('id_paket')->references('id')->on('paket');
