@@ -27,7 +27,7 @@
                 <h4>Kwitansi Pembayaran</h4>
             </div>
             <div class="d-flex justify-content-left my-3">
-              {{ date('Y-m-d H:i:s') }}
+              <p>{{ date('Y-m-d H:i:s') }}</p>
             </div>
             <div class="mt-4 pt-2">
                 

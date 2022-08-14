@@ -74,7 +74,7 @@
             $('#tgl_kembali').attr('min', acara); // tambahkan atribut min pada element dg id tgl_kembali
             var acaraDay = new Date(acara);
             var monthAcara = acaraDay.getMonth() + 1;
-            var dayAcara = acaraDay.getDate() + 3; // mengambil data tgl hari ini + 3 atau 3 hari kedepan
+            var dayAcara = acaraDay.getDate() + 2; // mengambil data tgl hari ini + 2 atau 2 hari kedepan
             var yearAcara = acaraDay.getFullYear();
             if(monthAcara < 10)
                 monthAcara = '0' + monthAcara.toString();
